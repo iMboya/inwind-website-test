@@ -1,6 +1,8 @@
-import { getContentList } from '/app/lib/fetchUnicloud';
+import { getContentList } from 'app/lib/fetchUnicloud';
+import { unstable_noStore as noStore } from 'next/cache';
 import Link from 'next/link';
 
+export const revalidate = 0;
 export default async function Home({ params }) {
 	const contentList = await getContentList({});
 	return (
