@@ -3,6 +3,8 @@ import Link from 'next/link';
 import HTMLReactParser from 'html-react-parser';
 import { revalidatePath } from 'next/cache';
 
+import { Button } from '@nextui-org/button';
+
 export async function generateMetadata({ params, searchParams }, parent) {
 	const info = await getContentInfo({ ...params });
 	return {
@@ -14,11 +16,12 @@ export default async function Home({ params }) {
 	let info = await getContentInfo({ ...params });
 
 	// 强制刷新当前页面
-	revalidatePath('/[zh]/content/[656f44738b0da41d31c38dcb]');
+	// revalidatePath('/[zh]/content/[656f44738b0da41d31c38dcb]');
 	return (
 		<div>
 			<h1>{info.name}</h1>
 			{HTMLReactParser(info.content)}
+			<Button>Click me</Button>
 		</div>
 	);
 }
